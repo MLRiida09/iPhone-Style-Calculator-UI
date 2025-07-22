@@ -1,7 +1,7 @@
 const screen = document.getElementById("screen").querySelector("p");
 const buttons = document.querySelectorAll(".number-div li");
 const acButton = document.querySelector('.AC');
-const acLabel = acButton.querySelector('span'); // الوصول للنص داخل الزر
+const acLabel = acButton.querySelector('span'); 
 
 let currentInput = "";
 let operator = "";
@@ -11,7 +11,7 @@ buttons.forEach(button => {
   button.addEventListener("click", () => {
     const value = button.textContent;
 
-    // ✅ زر AC / مسح
+    // AC / delete
     if (button.classList.contains("AC")) {
       if (currentInput.length > 0) {
         currentInput = currentInput.slice(0, -1);
@@ -91,18 +91,18 @@ function updateAC() {
   const isDelete = currentInput.length > 0;
   const newContent = isDelete ? '<i class="fa-solid fa-delete-left"></i>' : 'AC';
 
-  // أضف class لتأثير الخروج
+  // Add a class for the  fade  effect
   acLabel.classList.remove('fade-in');
   acLabel.classList.add('fade-out');
 
   setTimeout(() => {
-    // غيّر النص بعد التأثير
+    // Change the text after the fade 
     acLabel.innerHTML = newContent;
 
-    // أضف تأثير الدخول
+    // Add fade effect
     acLabel.classList.remove('fade-out');
     acLabel.classList.add('fade-in');
-  }, 150); // نصف مدة transition تقريبًا
+  }, 150); 
 }
 
 
